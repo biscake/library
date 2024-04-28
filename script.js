@@ -1,8 +1,9 @@
 const myLibrary = [];
 
-function Book(title, author) {
+function Book(title, author, read) {
     this.title = title;
     this.author = author;
+    this.read = Boolean(read);
 }
 
 function addBookToLibrary(book) {
@@ -48,6 +49,8 @@ function updateBook() {
         bookCard.addEventListener("click", (event) => {
             if (event.target.value === "read") {
                 bookCard.classList.toggle("read");
+                book.read = !book.read;
+                console.log(myLibrary);
             }
         })
         bookCard.appendChild(title);
@@ -82,6 +85,7 @@ bookModal.addEventListener("close", (e) => {
         const book = new Book(form.title.value, form.author.value);
         addBookToLibrary(book);
         updateBook();
+        console.log(myLibrary);
     }
     form.title.value = "";
     form.author.value = "";
