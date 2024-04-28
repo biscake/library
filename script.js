@@ -11,12 +11,20 @@ function addBookToLibrary(book) {
 
 const card = document.createElement("div");
 card.classList.add("book");
+
 const removeBook = document.createElement("button");
 removeBook.classList.add("remove");
 removeBook.setAttribute("value", "remove")
 removeBook.textContent = "X";
 
+const readBtn = document.createElement("button");
+readBtn.classList.add("readbtn");
+readBtn.setAttribute("value", "read");
+readBtn.textContent = "Read";
+
+
 card.appendChild(removeBook);
+card.appendChild(readBtn);
 
 function updateBook() {
     const main = document.querySelector("main");
@@ -34,7 +42,12 @@ function updateBook() {
             if (event.target.value === "remove") {
                 const bookTitle = event.target.nextSibling.textContent;
                 delBook(bookTitle);
-                // console.log(bookTitle);
+            }
+        })
+
+        bookCard.addEventListener("click", (event) => {
+            if (event.target.value === "read") {
+                bookCard.classList.toggle("read");
             }
         })
         bookCard.appendChild(title);
