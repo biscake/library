@@ -1,10 +1,18 @@
 const myLibrary = [];
 
-function Book(title, author, read) {
-    this.title = title;
-    this.author = author;
-    this.read = Boolean(read);
+class Book {
+    constructor(title, author) {
+        this.title = title;
+        this.author = author;
+        this.read = false;
+    }
+
+    setRead() {
+        this.read ? this.read = false : this.read = true;
+    }
+
 }
+
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -59,7 +67,6 @@ function updateBook() {
     });
 }
 
-const harry = new Book("Harry", "JK Rowling");
 
 const showNewBook = document.querySelector("#newbook");
 const bookModal = document.querySelector("#newbookmodal");
